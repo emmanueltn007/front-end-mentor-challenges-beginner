@@ -1,6 +1,6 @@
 function Header () {
     return (
-        <header>
+        <header className="p-8">
             <img src="/images/logo.svg" alt="base apparrel logo" />
         </header>
     );
