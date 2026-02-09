@@ -1,6 +1,20 @@
+import { useState } from "react";
+
 function CTA() {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email) setError("Email field cannot be empty"); 
+    else if (!validEmail.test(email)) setError("Please provide a valid email");
+    else setError("");
+
+    setEmail("");
   };
 
   return (
@@ -24,10 +38,15 @@ function CTA() {
       </p>
       <form className="w-full relative" noValidate onSubmit={handleSubmit}>
         <input
-          className="w-full text-[hsl(0,36%,70%)] outline-none border-2 border-[hsl(0,36%,70%)] py-3 px-4 rounded-3xl"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          className={`w-full text-[hsl(0,36%,70%)] outline-none border-2  py-3 px-4 rounded-3xl ${error ? "border-[hsl(0,93%,68%)]" : "border-[hsl(0,36%,70%)]"}`}
           type="text"
           placeholder="email address"
         />
+        {error && (
+            <p className="absolute top-full font-semibold text-[hsl(0,93%,68%)]">{error}</p>
+        )}
         <button
           className="bg-[hsl(0,36%,70%)] py-4 px-8 rounded-4xl cursor-pointer absolute top-0 bottom-0 -translate-x-full"
           type="submit"
