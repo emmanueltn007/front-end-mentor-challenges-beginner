@@ -9,9 +9,17 @@ export function useFormContext() {
 
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!email) setError("Email field cannot be empty");
-    else if (!validEmail.test(email)) setError("Please provide a valid email");
-    else setError("");
+    if (!email) {
+      setError("Email field cannot be empty");
+      return;
+    }
+    else if (!validEmail.test(email)) {
+      setError("Please provide a valid email");
+      return;
+    }
+    else {
+      setError("");
+    } 
 
     setEmail("");
   };
