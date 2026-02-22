@@ -28,10 +28,16 @@ body {
 }
 
 .info-container {
-    padding: 2em;
     display: flex;
     flex-direction: column;
     gap: 1em;
+}
+
+.heading-and-description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 2em 2em 0 2em;
 }
 
 .heading {
@@ -45,6 +51,7 @@ body {
 .user-details-container {
     display: flex;
     justify-content: space-between;
+    padding: 0 2em 2em 2em;
 }
 
 .user-details-container > div {
