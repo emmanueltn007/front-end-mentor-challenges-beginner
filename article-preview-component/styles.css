@@ -24,7 +24,7 @@ body {
 .cover-image-container > img {
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .info-container {
@@ -83,4 +83,23 @@ button {
 
 a > img {
     height: 0.75em;
+}
+
+@media screen and (max-width: 768px) {
+    .component-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 40% 60%;
+    }
+
+    .info-container {
+        justify-content: space-between;
+    }
+
+    .heading {
+        font-size: 1.5em;
+    }
+
+    .description {
+        font-size: 1em;
+    }
 }
