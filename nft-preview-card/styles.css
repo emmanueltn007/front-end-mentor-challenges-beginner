@@ -142,3 +142,10 @@ a {
     color: hsl(0, 0%, 100%);
     transition: all 0.15s ease-in-out;
 }
+
+@media  screen and (max-width: 768px) {
+    .card-container {
+        width: 100%;
+        margin: auto 2em;
+    }
+}
