@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const RATINGS = [ 1, 2, 3, 4, 5 ];
+
 function Card () {
 
     const [ratingNumber, setRatingNumber] = useState(null);
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
-
-
-    const ratings = [ 1, 2, 3, 4, 5 ];
 
     function handleSubmitButton () {
         if (ratingNumber === null) {
@@ -18,7 +17,6 @@ function Card () {
             navigate("/success", {
                 state: {ratingNumber}
             });
-            console.log("Rating submitted!");
         }
     }
 
@@ -36,12 +34,16 @@ function Card () {
                 All feedback is appreciated to help us improve our offering!
             </p>
             <div className="flex justify-between gap-4">
-                {ratings.map((rating, index) => {
+                {RATINGS.map((rating) => {
                     return (
                         <button 
-                            onClick={() => setRatingNumber(rating)}
+                            type="button"
+                            onClick={() => {
+                                setRatingNumber(rating);
+                                setError("");
+                            }}
                             className={`w-12 h-12 rounded-full cursor-pointer transition-all duration-300 ease-in-out ${ratingNumber === rating ? "bg-[hsl(0,100%,100%)] text-black" : "bg-[hsl(213,19%,18%)] hover:bg-[hsl(25,97%,53%)] hover:text-[hsl(216,12%,8%)] text-white"}`}
-                            key={index}
+                            key={rating}
                         >
                             {rating}
                         </button>
@@ -49,11 +51,10 @@ function Card () {
                 })}
             </div>
 
-            {error && (
-                <p className="text-red-500 italic">{error}</p>
-            )}
+            <p className={`text-red-500 italic min-h-5 ${error ? "opacity-100" : "opacity-0"}`}>{error}</p>
 
             <button 
+                type="button"
                 onClick={handleSubmitButton} 
                 className="bg-[hsl(25,97%,53%)] cursor-pointer rounded-4xl py-2 font-semibold hover:bg-[hsl(0,100%,100%)] transition-all duration-300 ease-in-out"
             >
