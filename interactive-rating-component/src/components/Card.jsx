@@ -15,7 +15,9 @@ function Card () {
         if (ratingNumber === null) {
             setError("Please select a rating");
         } else {
-            navigate("/success");
+            navigate("/success", {
+                state: {ratingNumber}
+            });
             console.log("Rating submitted!");
         }
     }
@@ -52,9 +54,8 @@ function Card () {
             )}
 
             <button 
-                aria-label="submit button"
                 onClick={handleSubmitButton} 
-                className="bg-[hsl(25,97%,53%)] cursor-pointer rounded-4xl py-4 font-semibold hover:bg-[hsl(0,100%,100%)] transition-all duration-300 ease-in-out"
+                className="bg-[hsl(25,97%,53%)] cursor-pointer rounded-4xl py-2 font-semibold hover:bg-[hsl(0,100%,100%)] transition-all duration-300 ease-in-out"
             >
                 SUBMIT
             </button>
